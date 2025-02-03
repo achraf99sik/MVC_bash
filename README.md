@@ -21,56 +21,48 @@ This Bash script automates the creation of a project directory with a predefined
 
 ## Directory Structure
 ```
-project-name/
-│── app/
-│   ├── config/
-│   │   └── config.php
-│   ├── controller/
-│   │   ├── _404.php
-│   │   ├── admin.php
-│   │   ├── Home.php
-│   │   ├── index.php
-│   │   ├── Login.php
-│   │   ├── logout.php
-│   │   ├── profile.php
-│   │   ├── Signup.php
-│   ├── core/
-│   │   ├── app.php
-│   │   ├── controller.php
-│   │   ├── functions.php
-│   │   ├── index.php
-│   │   ├── init.php
-│   │   ├── model.php
-│   │   └── permissions.php
-│   ├── database/
-│   │   └── database.php
-│   ├── model/
-│   │   ├── authModel.php
-│   │   ├── userModel.php
-│── docs/
-│── router/
-│   ├── web.php
-│── uploads/
-│── public/
-│   ├── assets/
-│   │   ├── css/
-│   │   ├── images/
-│   │   ├── js/
-│   ├── auth/
-│   │   ├── assets/
-│   │   │   ├── css/
-│   │   │   ├── images/
-│   │   │   ├── js/
-│   ├── user/
-│   │   ├── assets/
-│   │   │   ├── css/
-│   │   │   ├── images/
-│   │   │   ├── js/
-│── .gitattributes
-│── .gitignore
-│── .htaccess
-│── index.php
-│── README.md
+/projet-mvc-PHP
+│── public/ # Dossier public (accessible via le navigateur)PHP
+│ ├── index.php # Point d'entrée de l'applicationPHP
+│ ├── .htaccess # Réécriture d'URL et sécuritéPHP
+│ ├── assets/ # Fichiers CSS, JS, imagesPHP
+│
+│── app/ # Code de l'applicationPHP
+│ ├── controllers/ # Contrôleurs (Logique métier)PHP
+│ │ ├── front/ # Contrôleurs du Front OfficePHP
+│ │ │ ├── HomeController.PHP
+│ │ │ ├── ArticleController.PHP
+│ │ ├── back/ # Contrôleurs du Back Office (Admin)PHP
+│ │ │ ├── DashboardController.PHP
+│ │ │ ├── UserController.PHP
+│ ├── models/ # Modèles (Gestion de la base de données)PHP
+│ │ ├── User.PHP
+│ │ ├── Article.PHP
+│ ├── views/ # Fichiers templates pour les vuesPHP
+│ │ ├── front/ # Vues pour le Front OfficePHP
+│ │ │ ├── home.twigPHP
+│ │ │ ├── article.twigPHP
+│ │ ├── back/ # Vues pour le Back Office (Admin)PHP
+│ │ │ ├── dashboard.twigPHP
+│ │ │ ├── users.twigPHP
+│ ├── core/ # Classes principales de l'applicationPHP
+│ │ ├── Router.php # Gestion des routesPHP
+│ │ ├── Controller.php # Classe parent pour les contrôleursPHP
+│ │ ├── Model.php # Classe parent pour les modèlesPHP
+│ │ ├── View.php # Gestion des templates TwigPHP
+│ │ ├── Database.php # Connexion PostgreSQL via PDOPHP
+│ │ ├── Auth.php # Gestion des sessions et authentificationPHP
+│ │ ├── Validator.php # Validation des donnéesPHP
+│ │ ├── Security.php # Sécurisation contre XSS, CSRF, SQL InjectionPHP
+│ │ ├── Session.php # Gestion avancée des sessionsPHP
+│ ├── config/ # Configuration de l'applicationPHP
+│ │ ├── config.php # Configuration de la base de donnéesPHP
+│ │ ├── routes.php # Définition des routesPHP
+│── logs/ # Logs d'erreurs et d’accèsPHP
+│── vendor/ # Dépendances (si usage de Composer)PHP
+│── .env # Variables d’environnementPHP
+│── composer.json # Gestionnaire de dépendances PHPPHP
+│── .gitignore # Fichiers à ignorer par Git
 ```
 
 ## Prerequisites
