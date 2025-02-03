@@ -6,10 +6,37 @@ read ndir
 if [ "$ndir" ]; then
     if [ ! -d "$ndir" ]; then
         mkdir "$ndir"
-        `cd $ndir
+        cd "$ndir" || exit
         git init
-        mkdir -p app app/config app/controller app/core app/database app/model app/view app/view/includes docs router uploads public public/assets public/user public/auth public/assets/css public/assets/images public/assets/js public/auth/assets/css public/auth/assets/images public/auth/assets/js public/user/assets/css public/user/assets/images public/user/assets/js
-        touch app/config/config.php app/controller/_404.php app/database/database.php app/model/authModel.php router/web.php app/model/userModel.php app/controller/admin.php app/controller/Home.php app/controller/index.php app/controller/Login.php app/controller/logout.php app/controller/profile.php app/controller/Signup.php app/core/app.php app/core/controller.php app/core/functions.php app/core/index.php app/core/init.php app/core/model.php app/core/permissions.php .gitattributes .gitignore .htaccess index.php README.md`
+        
+        # Définition de la structure du projet
+        mkdir -p {public/{assets,},app/{controllers/{front,back},models,views/{front,back},core,config},logs,vendor}
+        
+        # Création des fichiers
+        # Public
+        touch public/{index.php,.htaccess}
+        
+        # App - Contrôleurs
+        touch app/controllers/front/{HomeController.php,ArticleController.php}
+        touch app/controllers/back/{DashboardController.php,UserController.php}
+        
+        # App - Modèles
+        touch app/models/{User.php,Article.php}
+        
+        # App - Vues
+        touch app/views/front/{home.twig,article.twig}
+        touch app/views/back/{dashboard.twig,users.twig}
+        
+        # App - Core
+        touch app/core/{Router.php,Controller.php,Model.php,View.php,Database.php,Auth.php,Validator.php,Security.php,Session.php}
+        
+        # App - Config
+        touch app/config/{config.php,routes.php}
+        
+        # Racine
+        touch {.env,composer.json,.gitignore}
+        
+        echo "Structure du projet MVC PHP créée avec succès !"
     else
         echo "Directory '$ndir' already exists."
     fi
