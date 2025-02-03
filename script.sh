@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Enter directory name"
+echo "Enter project name"
 read ndir
 
 if [ "$ndir" ]; then
